@@ -22,12 +22,13 @@ namespace Wpf_Lista_Fimow
     public partial class MainWindow : Window
     {
         public ObservableCollection<Film> Filmy { get; set; } = new ObservableCollection<Film>();
-        public List<string> Kategorie{get;set; } = new List<string> { "animowany", "Sci-Fi", "Dramat", "Fantasy", "Komedia", "Horror" };
+        public List<string> Kategorie{get;set; } = new List<string> { "Animowany", "Sci-Fi", "Dramat", "Fantasy", "Komedia", "Horror" };
         public MainWindow()
         {
             InitializeComponent();
             przygotujFilmy();
             DataContext = this;
+            DataGridComboBoxKategoria.ItemsSource = Kategorie;
         }
 
         private void przygotujFilmy()
@@ -42,5 +43,14 @@ namespace Wpf_Lista_Fimow
 
 
         }
+
+        private void Button_Click_Dodaj_film(object sender, RoutedEventArgs e)
+        {
+            string tytul = tytulTextBox.Text;
+            string kategoria = kategoriaComboBox.Text;
+            int rok = int.Parse(RokTextBox.Text);
+            bool czyDlaDoroslych = DlaDorosluychCheckBox.IsChecked == true ? true : false;
+            Filmy.Add(new Film(tytul,kategoria, rok, czyDlaDoroslych));
+                }
     }
 }

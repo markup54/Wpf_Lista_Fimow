@@ -11,7 +11,20 @@
                   RowBackground="BurlyWood"
                   AlternatingRowBackground="Beige"
                   AlternationCount="3"
+                  AutoGenerateColumns="False"
                   >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tytuł filmu"
+                                    Binding="{Binding Tytul}"/>
+                <DataGridComboBoxColumn
+                    Header="Kategoria filmu"
+                    x:Name="DataGridComboBoxKategoria"
+                    SelectedItemBinding="{Binding Kategoria}"
+                    />
+                <DataGridCheckBoxColumn
+                    Header="Czy tylko dla dorosłych?"
+                    Binding="{Binding TylkoDlaDoroslych}"/>
+            </DataGrid.Columns>
 
         </DataGrid>
         <Separator Margin="20"/>
@@ -21,13 +34,14 @@
             <Label>Wybierz kategorię</Label>
             <ComboBox
                 ItemsSource="{Binding Kategorie}"
+                x:Name="kategoriaComboBox"
                 ></ComboBox>
             <Label>Podaj Rok</Label>
             <TextBox x:Name="RokTextBox"></TextBox>
             <CheckBox x:Name="DlaDorosluychCheckBox">Czy tylko dla dorosłuch?</CheckBox>
             <Label></Label>
             <Label></Label>
-            <Button>Dodaj</Button>
+            <Button Click="Button_Click_Dodaj_film">Dodaj</Button>
         </UniformGrid>
 
     </StackPanel>
