@@ -1,0 +1,34 @@
+﻿<Window x:Class="Wpf_Lista_Fimow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_Lista_Fimow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <DataGrid ItemsSource="{Binding Filmy}"
+                  RowBackground="BurlyWood"
+                  AlternatingRowBackground="Beige"
+                  AlternationCount="3"
+                  >
+
+        </DataGrid>
+        <Separator Margin="20"/>
+        <UniformGrid Columns="2">
+            <Label>Podaj tytuł filmu</Label>
+            <TextBox x:Name="tytulTextBox"></TextBox>
+            <Label>Wybierz kategorię</Label>
+            <ComboBox
+                ItemsSource="{Binding Kategorie}"
+                ></ComboBox>
+            <Label>Podaj Rok</Label>
+            <TextBox x:Name="RokTextBox"></TextBox>
+            <CheckBox x:Name="DlaDorosluychCheckBox">Czy tylko dla dorosłuch?</CheckBox>
+            <Label></Label>
+            <Label></Label>
+            <Button>Dodaj</Button>
+        </UniformGrid>
+
+    </StackPanel>
+</Window>
